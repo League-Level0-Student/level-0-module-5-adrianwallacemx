@@ -12,14 +12,22 @@ int groundA = 550;
 int score = 0;
 boolean gameOver = false;
 
+PImage bird;
+PImage background;
+PImage pipe;
 void setup() {
   size(600, 600);
+  
+  bird = loadImage("bird.jpeg");
+  background = loadImage("background.png");
+  pipe = loadImage("pipe.jpeg");
 }
 
 void draw() {
 
   if (gameOver == false) {
-    background(#FC1414);
+    //background(#FC1414);
+    image(background ,0, 0, background.width * 10, background.height * 10);
 
     fill(255);
     textSize(20);
@@ -27,12 +35,17 @@ void draw() {
 
     fill(#14FC73);
     stroke(#1421FC);
-    ellipse(birdX, birdY, 50, 50);
-
+    //ellipse(birdX, birdY, 50, 50);
+    image(bird, birdX, birdY, 50, 50); 
+    
     fill(#1421FC);
-    rect(pipeX, pipeY, 50, upperPipeHeight);
-    rect(pipeX, upperPipeHeight + pipeGap, 50, height);
+    //rect(pipeX, pipeY, 50, upperPipeHeight);
+    image(pipe, pipeX, pipeY,50,upperPipeHeight);
+    //rect(pipeX, upperPipeHeight + pipeGap, 50, height);
+    image(pipe, pipeX, upperPipeHeight + pipeGap, 50, height);
+   
     rect(0, groundA, width, height - groundA); 
+    
     pipeX -= 3;
     pipeA -= 3;
     if (pipeX < -50) {
